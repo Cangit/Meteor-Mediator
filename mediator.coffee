@@ -4,6 +4,8 @@ Mediator =
   channels: {}
 
   publish: (name) ->
+    unless @channels[name]
+      return null
     @channels[name].args = _.toArray(arguments)
     @channels[name].deps.changed()
 
